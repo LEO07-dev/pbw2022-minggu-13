@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Dasar Ajax</title>
+</head>
+<body>
+    <h1>Tutorial Ajax</h1>
+    <div class="hasil"></div>
+    <button onclick="loadContent()">Load Content</button>
+    <!-- Javascript -->
+    <script>
+        function loadContent() {
+            var xhr = new XMLHttpRequest();
+            var url = "..   /kode.json";
+            xhr.onreadystatechange = function () {
+               /* proses mengambil data dari file.txt dengan 
+                methode GET. kemudian hasilnya dimasukan ke dalam elemn <div 
+                id="hasil">, event yang digunakan adalah onreadystatechange, 
+                pada event ini bisa mengecek state dan status AJAX. */
+
+                if (this.readyState == 4 && this.status == 200) {
+                    // Kode state 4 artinya done dan status 200 artinya sukses.
+                    document.getElementById("hasil").innerHTML = this.responseText;
+                }
+            };
+            xhr.open("GET", url, true);
+            // 1. GET adalah metode request yang akan digunakan;
+            // 2. url adalah alamat URL tujuan;
+            // 3. true adalah untuk mengeksekusi AJAX secara asynchronous.
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
